@@ -1,5 +1,17 @@
 # gas-weekly-report-pdf
 
+## In English
+
+A Google Apps Script sample that builds a weekly report from ad and sales sheets. All data is fictional (an online shop).
+It totals last week (Monday to Sunday): ad spend, clicks, sign-ups, cost per sign-up, sales, per-channel figures and change from the week before.
+The table is saved as a PDF in a Drive folder, and the planned team email is listed in a sheet without being sent. It runs on Mondays between 8 and 9 AM.
+Rows with an unreadable date, number or channel are left out and written to an error log sheet.
+How to try it:
+1. Create a new spreadsheet and open Apps Script from Extensions.
+2. Paste each `.gs` file in `src/`, replace `appsscript.json`, and add the Drive API (v3) service.
+3. Run `resetDemo` to load sample data and `makeDemoWeek` to see the result. `setupTriggers` adds the Monday trigger (`stopTriggers` to stop).
+4. Local tests with mocked Google services: `node test/run.js`. Not yet run in a real Apps Script project.
+
 広告と売上のシートから、週次レポートを自動で作る Google Apps Script の見本です。
 架空の通販会社のデータで動きます。登場する会社・媒体・商品・宛先はすべて架空です。
 
