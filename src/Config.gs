@@ -1,6 +1,6 @@
 /** 設定：架空のネットショップ（広告と売上のシートから、週次レポートを毎週月曜の朝に作るデモ）。業種ごとの値はここだけに置く */
 var APP_CONFIG = {
-  demoWeek: '2026-10-26', // デモの架空データが入っている週（makeDemoWeek で使う）
+  demoWeek: '2026-10-19', // デモの架空データが入っている週（makeDemoWeek で使う）
   tz: 'Asia/Tokyo',
   propPrefix: 'wk_',
   sheets: { ads: '広告', sales: '売上', summary: '週次サマリー', history: '週次記録', send: '送信予定', noticeLog: 'エラー通知ログ' },

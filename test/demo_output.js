@@ -4,7 +4,7 @@ var fs = require('fs'), path = require('path'), vm = require('vm');
 var mock = require('./mock_apis.js');
 var B = path.join(__dirname, '..', 'src');
 var FILES = ['Common.gs', 'Config.gs', 'SeedData.gs', 'Dedupe.gs', 'Notify.gs', 'Pdf.gs', 'Code.gs'];
-var b = mock.buildMockGlobals({ nowMs: Date.UTC(2026, 10, 1, 23, 0, 0), docs: true });
+var b = mock.buildMockGlobals({ nowMs: Date.UTC(2026, 9, 25, 23, 0, 0), docs: true });
 var ctx = vm.createContext(b.globals);
 FILES.forEach(function (f) { vm.runInContext(fs.readFileSync(path.join(B, f), 'utf8'), ctx, { filename: f }); });
 ctx.resetDemo();

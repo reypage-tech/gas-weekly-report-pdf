@@ -5,7 +5,7 @@
  * 使う部品：Common（共通）・Dedupe（二度作らない）・Pdf（PDF作成）・Notify（エラーは通知文を記録するだけ）
  */
 function onOpen() {
-  SpreadsheetApp.getUi().createMenu('週次レポート').addItem('先週分を作る（送信は記録だけ）', 'weeklyReport').addItem('デモの週（2026-10-26〜）を作る', 'makeDemoWeek').addItem('デモを最初に戻す', 'resetDemo').addToUi();
+  SpreadsheetApp.getUi().createMenu('週次レポート').addItem('先週分を作る（送信は記録だけ）', 'weeklyReport').addItem('デモの週（2026-10-19〜）を作る', 'makeDemoWeek').addItem('デモを最初に戻す', 'resetDemo').addToUi();
 }
 
 /** トリガーとメニューから呼ぶ：先週（月〜日）の分を作る */
