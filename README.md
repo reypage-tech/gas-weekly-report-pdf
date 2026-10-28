@@ -1,18 +1,13 @@
-# gas-weekly-report-pdf
+# 広告と売上の週次レポートを月曜の朝にPDFで作る（GAS見本）
 
-## In English
+ネットショップで、毎週の広告費・申込・売上を表にまとめてチームに出している担当の方向けです。
 
-A Google Apps Script sample that builds a weekly report from ad and sales sheets. All data is fictional (an online shop).
-It totals last week (Monday to Sunday): ad spend, clicks, sign-ups, cost per sign-up, sales, per-channel figures and change from the week before.
-The table is saved as a PDF in a Drive folder, and the planned team email is listed in a sheet without being sent. It runs on Mondays between 8 and 9 AM.
-Rows with an unreadable date, number or channel are left out and written to an error log sheet.
-How to try it:
-1. Create a new spreadsheet and open Apps Script from Extensions.
-2. Paste each `.gs` file in `src/`, replace `appsscript.json`, and add the Drive API (v3) service.
-3. Run `resetDemo` to load sample data and `makeDemoWeek` to see the result. `setupTriggers` adds the Monday trigger (`stopTriggers` to stop).
-4. Local tests with mocked Google services: `node test/run.js`. Not yet run in a real Apps Script project.
+![週次レポートのPDFにする前の中身とエラー通知ログ（模擬テストの出力、架空データ）](docs/local_test_output.png)
 
-広告と売上のシートから、週次レポートを自動で作る Google Apps Script の見本です。
+架空の先週分（2026-10-26〜2026-11-01）を前の週と比べた表を作り、読めない3行を集計から外してエラー通知ログに残した結果です。上の画像は、ローカルの模擬テスト（`node test/demo_output.js`、Google のサービスはモック）の実際の出力から作りました。実際の Google アカウントでは動かしていません。
+
+**効果：** 毎週手で集計していた表が、月曜の朝8時台に自動でPDFになり、ドライブに保存されます。
+
 架空の通販会社のデータで動きます。登場する会社・媒体・商品・宛先はすべて架空です。
 
 ## 課題
@@ -34,10 +29,10 @@ How to try it:
 | 前週との比較 | 手で計算 | 毎週同じ形で増減まで入る |
 | 入力の間違い | 集計に入りやすい | 外して、どの行かを知らせる |
 
-ローカルの模擬テスト（`node test/run.js`、GoogleのサービスはモックAPI）で54件すべて通ることを確かめています。
+ローカルの模擬テスト（`node test/run.js`、Google のサービスはモック）で54件すべて通ることを確かめています。
 
 ## 画面
-画像は後で追加します。
+冒頭の画像（docs/local_test_output.png）を見てください。
 
 ## 設置の手順
 1. 新しいスプレッドシートを作り、「拡張機能」から Apps Script を開く
@@ -58,7 +53,7 @@ How to try it:
 | src/Code.gs | 集計・表・PDF・送信予定・トリガー |
 | src/Dedupe.gs | 作成済みの週の記録 |
 | src/Pdf.gs・Notify.gs・Common.gs | PDF・通知文・共通の処理 |
-| test/ | Node.js で動くテスト |
+| test/ | Node.js で動くテスト（demo_output.js は冒頭の画像の元になる出力） |
 
 ## 作りの工夫
 - テスト：`node test/run.js`（Google のサービスを偽物に置き換えて Node.js で動かします。期待する合計は架空データから別に手で計算した数です）
@@ -72,6 +67,18 @@ How to try it:
 
 ## 作った人
 Reypage｜GAS業務自動化
+
+## In English
+
+A Google Apps Script sample that builds a weekly report from ad and sales sheets. All data is fictional (an online shop).
+It totals last week (Monday to Sunday): ad spend, clicks, sign-ups, cost per sign-up, sales, per-channel figures and change from the week before.
+The table is saved as a PDF in a Drive folder, and the planned team email is listed in a sheet without being sent. It runs on Mondays between 8 and 9 AM.
+Rows with an unreadable date, number or channel are left out and written to an error log sheet.
+How to try it:
+1. Create a new spreadsheet and open Apps Script from Extensions.
+2. Paste each `.gs` file in `src/`, replace `appsscript.json`, and add the Drive API (v3) service.
+3. Run `resetDemo` to load sample data and `makeDemoWeek` to see the result. `setupTriggers` adds the Monday trigger (`stopTriggers` to stop).
+4. Local tests with mocked Google services: `node test/run.js`. The image at the top is built from `node test/demo_output.js` on the same mocks. Not yet run in a real Apps Script project.
 
 ## ライセンス
 MIT（LICENSE を参照）
